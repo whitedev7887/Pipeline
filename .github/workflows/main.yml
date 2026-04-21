@@ -1,0 +1,35 @@
+# 1. NAME: The name of this automation
+name: My First CI Pipeline
+
+# 2. THE DOORBELL (Trigger):
+# This tells the robot to start every time code is "pushed" (saved) 
+# to the branch named 'main'.
+on:
+  push:
+    branches: [ "main" ]
+
+# 3. THE WORKER (Job):
+# We define a "Job" and tell it to use a Microsoft-hosted Linux computer.
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    # 4. THE TO-DO LIST (Steps):
+    steps:
+    # This step "checks out" your code so the robot can see your files.
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Chore A: The Build
+    - name: Step A - Build Application
+      run: |
+        echo "Starting build process..."
+        echo "Building the app... [Done]"
+
+    # Chore B: The Test
+    - name: Step B - Run Basic Tests
+      run: |
+        echo "Running unit tests..."
+        echo "Test 1: Check Database Connection... [OK]"
+        echo "Test 2: Check Login Page... [OK]"
+        echo "Result: 100% Success!"
